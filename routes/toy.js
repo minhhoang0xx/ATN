@@ -1,66 +1,75 @@
 var express = require('express');
-const ToyModels = require('../models/toyModels');
+const ToyModels = require('../models/ToyModels');
 var router = express.Router();
 
 router.get('/', async (req, res) => {
     var toy = await ToyModels.find({})
-    res.render('toy/home',{Toys:toy})
+    res.render('toy/home', { Toys: toy })
 });
 router.get('/delete/:id', async (req, res) => {
-    await ToysModels.findByIdAndDelete(req.params.id)
+    await ToyModels.findByIdAndDelete(req.params.id)
     res.redirect('/toy')
 });
-
-router.get('/list', async (req, res) => {
-    var toy = await ToysModels.find({})
-    res.render('toy/list', { Toys: toy })
+router.get('/header', async (req, res) => {
+    res.render('toy/header');
+})
+router.get('/listToy', async (req, res) => {
+    var toy = await ToyModels.find({})
+    res.render('toy/listToy', { Toys: toy })
 });
 
-router.post('/rent', async (req, res) => {
+router.post('/cart', async (req, res) => {
     var id = req.body.id;
-    var toy = await ToysModels.findById(id);
-    res.render('toy/rent', { Toys: toy });
+    var toy = await ToyModels.findById(id);
+    res.render('toy/cart', { Toys: toy });
 })
-router.get('/add',async (req, res) => {
-    res.render('toy/add');
-})
-
-router.post('/add', async (req,res) =>{
-var toy = req.body;
-await ToysModels.create(toy)
-.then(() => {console.log('Add success')});
-res.redirect('/toy');
+router.get('/addToy', async (req, res) => {
+    res.render('toy/addToy');
 })
 
-router.get('/edit/:id', async (req, res) =>{
+router.post('/addToy', async (req, res) => {
+    var toy = req.body;
+    await ToyModels.create(toy)
+    res.redirect('/toy');
+})
+
+router.get('/editToy/:id', async (req, res) => {
     var id = req.params.id
-    var toy =await ToysModels.findById(id);
-    res.render('toy/edit',{Toys:toy})
+    var toy = await ToyModels.findById(id);
+    res.render('toy/editToy', { Toys: toy })
 })
 
-router.post('/edit/:id', async (req, res) => {
-    await ToysModels.findByIdAndUpdate(req.params.id, req.body);
+router.post('/editToy/:id', async (req, res) => {
+    var id = req.params.id;
+    var toy = req.body;
+    await ToyModels.findByIdAndUpdate(id, toy);
     res.redirect('/toy')
 })
 
 //search
-router.post('/search',async (req,res)=>{
-    var keyword = req.body.name;
-    var toy = await ToysModels.find({name:new RegExp(keyword,"i")})
-    res.render('toy/list', {Toys:toy})
+router.post('/search', async (req, res) => {
+    var keyword = req.body.toys_name;
+    var toy = await ToyModels.find({ toys_name: new RegExp(keyword, "i") })
+    res.render('toy/home', { Toys: toy })
 })
 
-//sort
+router.get('/sort/low', async (req, res) => {
+    var toy = await ToyModels.find().sort({ toys_price: 1 })
+    res.render('toy/home', { Toys: toy })
+})
 
-//sort function
-router.get('/sort/asc', async (req, res) => {
-    var toy = await ToysModels.find().sort({ name: 1 })
-    res.render('toy/list', { Toys: toy })
- })
- 
- router.get('/sort/dsc', async (req, res) => {
-    var toy = await ToysModels.find().sort({ name: -1 })
-    res.render('toy/list', { Toys: toy })
- })
- 
- module.exports = router;
+router.get('/sort/hight', async (req, res) => {
+    var toy = await ToyModels.find().sort({ toys_price: -1 })
+    res.render('toy/home', { Toys: toy })
+})
+router.get('/girl', async (req, res) => {
+    var toys = await ToyModels.find({ toys_gender: {$in:['girl','unisex']}});
+    res.render('toy/home', { Toys: toys });
+})
+
+router.get('/boy', async (req, res) => {
+    var toys = await ToyModels.find({ toys_gender: {$in:['boy','unisex']}});
+    res.render('toy/home', { Toys: toys });
+})
+
+module.exports = router;

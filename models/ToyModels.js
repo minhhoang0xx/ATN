@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var ToySchema = mongoose.Schema({
     toys_name:String,   
-    toys_year:Date,
+    toys_year:String,
     toys_country:String,
     toys_price:String,
     toys_gender:String,

@@ -13,13 +13,13 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended : false}))
 ////////////////////////////////////////////////////////////moongose
 var mongoose = require("mongoose");
-var uri = "mongodb+srv://hoanglmgch210529:hoanghoang@cluster0.ptn5ovz.mongodb.net/ATN";
+var uri = "mongodb+srv://hoanglmgch210529:hoanghoang@cluster0.h65pytq.mongodb.net/ATN";
 mongoose.connect(uri)
 .then(() => console.log ("Connect to DB succeed !"))
 .catch((err) => console.log (err));
 ////////////////////////////////////////////////////////////hbs 
-var hbs = require('hbs');
-hbs.registerHelper('dateFormat', require('handlebars-dateformat')); 
+// var hbs = require('hbs');
+// hbs.registerHelper('dateFormat', require('handlebars-dateformat')); 
 /////////////////////////////////////////////////////////
 // set
 
