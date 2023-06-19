@@ -8,15 +8,9 @@ router.get('/', async (req, res) => {
 });
 router.get('/delete/:id', async (req, res) => {
     await ToyModels.findByIdAndDelete(req.params.id)
-    res.redirect('/toy')
+    res.redirect('/')
 });
-router.get('/header', async (req, res) => {
-    res.render('toy/header');
-})
-router.get('/listToy', async (req, res) => {
-    var toy = await ToyModels.find({})
-    res.render('toy/listToy', { Toys: toy })
-});
+
 
 router.post('/cart', async (req, res) => {
     var id = req.body.id;
@@ -30,7 +24,7 @@ router.get('/addToy', async (req, res) => {
 router.post('/addToy', async (req, res) => {
     var toy = req.body;
     await ToyModels.create(toy)
-    res.redirect('/toy');
+    res.redirect('/');
 })
 
 router.get('/editToy/:id', async (req, res) => {
@@ -43,7 +37,7 @@ router.post('/editToy/:id', async (req, res) => {
     var id = req.params.id;
     var toy = req.body;
     await ToyModels.findByIdAndUpdate(id, toy);
-    res.redirect('/toy')
+    res.redirect('/')
 })
 
 //search
@@ -71,5 +65,11 @@ router.get('/boy', async (req, res) => {
     var toys = await ToyModels.find({ toys_gender: {$in:['boy','unisex']}});
     res.render('toy/home', { Toys: toys });
 })
+
+router.get('/index', async (req, res) => {
+    var toys = await ToyModels.find({});
+    res.render('toy/index',{Toys:toys});
+})
+
 
 module.exports = router;

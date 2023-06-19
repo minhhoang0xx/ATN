@@ -1,76 +1,104 @@
 
-    <h1 style="color:green; text-align:center">LIST TOY</h1>
-<table class="table table-bordered" >
-    <br>
-    <tr>
-        <th colspan="3">
-    <div class="row">
-        <div class="col-2">
-            <a class="btn btn-primary" href="/toy" style="background-color: darkgreen; border: 0px; width: 110px">List</a>
-        </div>
-        <div class="col-10">
-            <form action="/toy/search" method="post">
-                <div class="input-group">
-                    <input class="form-control" type="search" name="toys_name" placeholder="Search by name">
-                    <button class="btn btn-primary" style="background-color: darkgreen; width: 127px" type="submit">Search</button>
+
+<div class="content-wrapper" style="margin-top:50px;">
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header" style="background-color:darkgreen; color:white">
+                            <h1 class="card-title" style="text-align:center">Toy Management</h3>
+                        </div>
+                        <!-- /.card-header -->
+
+                        <table class="table table-head-fixed text-nowrap">
+                            <tr>
+                                <th colspan="3">
+                                            <form action="/search" method="post">
+                                                <div class="input-group">
+                                                    <input class="form-control" type="search" name="toys_name" placeholder="Search by name">
+                                                    <button class="btn btn-primary" style="background-color: darkgreen; width: 127px"type="submit">Search</button>
+                                                </div>
+                                            </form>
+                                </th>
+                                <th class="dropdown" colspan="">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false"
+                                        style="color:green;background-color:white;border:0; font-weight:bold ">
+                                        Sort By Price
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                                        <li><a class="dropdown-item" href="/sort/hight">High to Low</a></li>
+                                        <li><a class="dropdown-item" href="/sort/low">Low to High</a></li>
+                                    </ul>
+                                </th>
+                                <th style="width:125px">
+                                    <div class="d-flex justify-content-between">
+                                        <a class="btn btn-primary"
+                                            style="background-color:darkgreen; border:0;width:auto"
+                                            onmouseover="this.style.backgroundColor='green'"
+                                            onmouseout="this.style.backgroundColor='darkgreen'" href="/girl">Girl</a>
+                                        <a class="btn btn-primary"
+                                            style="background-color:darkgreen; border:0;width:auto"
+                                            onmouseover="this.style.backgroundColor='green'"
+                                            onmouseout="this.style.backgroundColor='darkgreen'" href="/boy">Boy</a>
+                                    </div>
+                                </th>
+                                <th></th>
+                                <th style="width:120px">
+                                    <a class="btn btn-primary" href="/addToy"
+                                        style="background-color:darkgreen ;border:0px;width:120px">+
+                                        NEW</a>
+                                </th>
+                            </tr>
+                            <tr style="text-align:center">
+                                <th>NAME</th>
+                                <th>YEAR</th>
+                                <th>COUNTRY</th>
+                                <th>PRICE</th>
+                                <th>GENDER</th>
+                                <th>IMAGE</th>
+                                <th>ACTION</th>
+                            </tr>
+
+
+                            {{#each Toys}}
+                            <tr style="text-align:center">
+                                <th style="text-align:left;"><br><br><br>{{toys_name}}</th>
+                                <th><br><br><br>{{toys_year}}</th>
+                                <th><br><br><br>{{toys_country}}</th>
+                                <th><br><br><br>{{toys_price}}$</th>
+                                <th><br><br><br>{{toys_gender}}</th>
+                                <th>
+                                    <img src="{{toys_image}}" width="150px" height="200px">
+                                </th>
+                                <th>
+                                    <br><br>
+                                    <a class="btn btn-danger" style="width:120px;background-color:darkgreen;border:0px"
+                                        href="/editToy/{{_id}}">UPDATE</a>
+                                    <br><br>
+                                    <a class="btn btn-danger" style="width:120px;background-color:darkgreen;border:0px"
+                                        href="/delete/{{_id}}"
+                                        onclick="return confirm('Do u wanna delete?');">DELETE</a>
+                                </th>
+                            </tr>
+                            {{/each}}
+
+                        </table>
+
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
                 </div>
-            </form>
-        </div>
-    </div>
-</th>
-        <th class="dropdown" colspan="">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown"
-                aria-expanded="false" style="color:green;background-color:white;border:0; font-weight:bold">
-                Sort By Price
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                <li><a class="dropdown-item" href="/toy/sort/hight">High to Low</a></li>
-                <li><a class="dropdown-item" href="/toy/sort/low">Low to High</a></li>
-            </ul>
-        </th>
-        <th style="width:125px">
-            <div class="d-flex justify-content-between">
-                <a class="btn btn-primary" style="background-color:darkgreen; border:0;width:auto"
-                    onmouseover="this.style.backgroundColor='green'" onmouseout="this.style.backgroundColor='darkgreen'"
-                    href="/toy/girl">Girl</a>
-                <a class="btn btn-primary" style="background-color:darkgreen; border:0;width:auto"
-                    onmouseover="this.style.backgroundColor='green'" onmouseout="this.style.backgroundColor='darkgreen'"
-                    href="/toy/boy">Boy</a>
             </div>
-        </th>
-        <th></th>
-        <th style="width:120px">
-            <a class="btn btn-primary" href="/toy/addToy" style="background-color:darkgreen ;border:0px;width:120px">+
-                NEW</a>
-        </th>
-    </tr>
-    <tr style="background-color: green;text-align:center;color:aliceblue">
-        <th>NAME</th>
-        <th>YEAR</th>
-        <th>COUNTRY</th>
-        <th>PRICE</th>
-        <th>GENDER</th>
-        <th>IMAGE</th>
-        <th>ACTION</th>
-    </tr>
-    {{#each Toys }}
-    <tr style="text-align:center">
-        <th>{{toys_name}}</th>
-        <th>{{toys_year}}</th>
-        <th>{{toys_country}}</th>
-        <th>{{toys_price}}$</th>
-        <th>{{toys_gender}}</th>
-        <th>
-            <img src="{{toys_img}}" width="150px" height="200px">
-        </th>
-        <th>
-            <br><br>
-            <a class="btn btn-danger" style="width:120px;background-color:darkgreen;border:0px"
-                href="/toy/editToy/{{_id}}">UPDATE</a>
-            <br><br>
-            <a class="btn btn-danger" style="width:120px;background-color:darkgreen;border:0px"
-                href="/toy/delete/{{_id}}" onclick="return confirm('Do u wanna delete?');">DELETE</a>
-        </th>
-    </tr>
-    {{/each}}
-</table>
+            <!-- /.row -->
+            <!-- Main row -->
+            <!-- /.row (main row) -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

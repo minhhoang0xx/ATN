@@ -1,0 +1,87 @@
+<div class="content-wrapper" style="margin-top:50px;">
+
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header" style="background-color:darkgreen; color:white">
+              <h1 class="card-title" style="text-align:center">Toy Management</h3>
+            </div>
+            <!-- /.card-header -->
+
+            <table class="table table-head-fixed text-nowrap">
+              <tr>
+                <th></th>
+                <th style="text-align: center;">
+                  <form action="/search" method="post">
+                    <div class="input-group">
+                      <input class="form-control" type="search" name="toys_name" placeholder="Search by name">
+                      <button class="btn btn-primary" style="background-color: darkgreen; width: 127px"
+                        type="submit">Search <i class="fa fa-search" aria-hidden="true"></i></button>
+                    </div>
+                  </form>
+                </th>
+        
+                <th class="dropdown" colspan="">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false"
+                    style="color:green;background-color:white;border:0; font-weight:bold ">
+                    Sort
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                    <li><a class="dropdown-item" href="/sort/hight">High to Low</a></li>
+                    <li><a class="dropdown-item" href="/sort/low">Low to High</a></li>
+                  </ul>
+                </th>
+              <th></th><th></th>
+                <th style="text-align:center">
+                  <a class="btn btn-primary" href="/addToy"
+                    style="background-color:darkgreen ;border:0px"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                </th>
+              </tr>
+              <tr style="text-align:center">
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Action</th>
+
+              </tr>
+
+
+              {{#each Login }}
+              <tr style="text-align:center">
+                <th>{{Email}}</th>
+                <th>{{Fullname}}</th>
+                <th>{{Age}}</th>
+                <th>{{Address}}</th>
+                <th>
+                  <a class="btn btn-danger" style="background-color:darkgreen;border:0px"
+                    href="/editToy/{{_id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+                  <a class="btn btn-danger" style="background-color:darkgreen;border:0px" href="/delete/{{_id}}"
+                    onclick="return confirm('Do u wanna delete?');">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </a>
+                </th>
+              </tr>
+              {{/each}}
+
+            </table>
+
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
