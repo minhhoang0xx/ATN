@@ -13,7 +13,7 @@
               <thead>
                 <tr>
                   <th colspan="2">
-                    <form action="/searchCustomer" method="post">
+                    <form action="/manage/searchCustomer" method="post">
                       <div class="input-group">
                         <input class="form-control" type="search" name="Fullname" placeholder="Search by name">
                         <button class="btn btn-primary" style="background-color: #212529; width: 127px;border:0"
@@ -28,13 +28,13 @@
                       Sort
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                      <li><a class="dropdown-item" href="/sort/noyoung">High to Low</a></li>
-                      <li><a class="dropdown-item" href="/sort/young">Low to High</a></li>
+                      <li><a class="dropdown-item" href="/manage/sort/noyoung">High to Low</a></li>
+                      <li><a class="dropdown-item" href="/manage/sort/young">Low to High</a></li>
                     </ul>
                   </th>
                   <th></th>
                   <th style="text-align:center">
-                    <a class="btn btn-primary" href="/addCustomer" style="background-color:#212529 ;border:0px;width:83px"><i
+                    <a class="btn btn-primary" href="/manage/addCustomer" style="background-color:#212529 ;border:0px;width:83px"><i
                         class="fa fa-plus-square" aria-hidden="true"></i></a>
                   </th>
 
@@ -57,9 +57,9 @@
                   <td>{{Address}}</td>
                   <td>
                     <a class="btn btn-danger" style="background-color:#212529;border:0px"
-                      href="/editCustomer/{{_id}}"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
+                      href="/manage/editCustomer/{{_id}}"><i class="fas fa-pencil-alt" aria-hidden="true"></i></a>
 
-                    <a class="btn btn-danger" style="background-color:#212529;border:0px" href="/deleteCustomer/{{_id}}"
+                    <a class="btn btn-danger" style="background-color:#212529;border:0px" href="/manage/deleteCustomer/{{_id}}"
                       onclick="return confirm('Do u wanna delete?');">
                       <i class="fas fa-trash-alt" aria-hidden="true"></i>
                     </a>

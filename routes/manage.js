@@ -9,18 +9,18 @@ router.get('/', async(req, res) => {
 
 router.get('/deleteCustomer/:id', async (req, res) => {
     await CusModels.findByIdAndDelete(req.params.id)
-    res.redirect('/')
+    res.redirect('/manage')
 });
 
 router.get('/addCustomer', async (req, res) => {
     console.log('asd');
-    res.render('/addCustomer');
+    res.render('manage/addCustomer');
   });
 
 router.post('/addCustomer', async (req, res) => {
     var customer = req.body;
     await CusModels.create(customer)
-    res.redirect('/');
+    res.redirect('/manage');
 });
 
 router.get('/editCustomer/:id', async (req, res) => {
@@ -33,7 +33,7 @@ router.post('/editCustomer/:id', async (req, res) => {
     var id = req.params.id;
     var customer = req.body;
     await CusModels.findByIdAndUpdate(id, customer);
-    res.redirect('/')
+    res.redirect('/manage')
 })
 
 //search

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 style="color:#212529;font-weight:bolder">Update Customer</h2>
+      <br>
+      <form action="/manage/editCustomer/{{Login._id}}" method="post">
+        <div class="mb-3">
+          <label for="price" class="form-label" style="font-weight:bold">Email </label>
+          <input class="form-control" type="email" name="Email" required value="{{Login.Email}}">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label" style="font-weight:bold">Fullname</label>
+          <input class="form-control" type="text" name="Fullname" required value="{{Login.Fullname}}" >
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label" style="font-weight:bold">Address</label>
+          <input class="form-control" type="text" name="Address" required value="{{Login.Address}}">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label" style="font-weight:bold">Age</label>
+          <input class="form-control" type="number" name="Age" required value="{{Login.Age}}" >
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label" style="font-weight:bold">Password</label>
+          <input class="form-control" type="password" name="PassWord" required value="{{Login.PassWord}}">
+        </div>
+      
+        <button type="submit" class="btn btn-primary" style="background-color: #212529; ">Update Customer</button>
+      </form>
+    </div>
+  </div>
+</div>
