@@ -8,5 +8,5 @@ var CusSchema = mongoose.Schema({
     PassWord:String
 });
 
-var CusModels = mongoose.model("customer",CusSchema,"Login");
+var CusModels = mongoose.model("cus",CusSchema,"Login");
 module.exports = CusModels;

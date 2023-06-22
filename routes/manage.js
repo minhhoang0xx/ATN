@@ -5,31 +5,29 @@ var router = express.Router();
 router.get('/', async(req, res) => {
     var customer = await CusModels.find({})
     res.render('manage/customer',{Login:customer});
-})
+});
 
 router.get('/deleteCustomer/:id', async (req, res) => {
     await CusModels.findByIdAndDelete(req.params.id)
     res.redirect('/')
 });
 
-
-
-
 router.get('/addCustomer', async (req, res) => {
-    res.render('manage/addCustomer');
-})
+    console.log('asd');
+    res.render('/addCustomer');
+  });
 
 router.post('/addCustomer', async (req, res) => {
     var customer = req.body;
     await CusModels.create(customer)
     res.redirect('/');
-})
+});
 
 router.get('/editCustomer/:id', async (req, res) => {
     var id = req.params.id
     var customer = await CusModels.findById(id);
     res.render('manage/editcustomer', { Login: customer })
-})
+});
 
 router.post('/editCustomer/:id', async (req, res) => {
     var id = req.params.id;
@@ -46,12 +44,12 @@ router.post('/searchCustomer', async (req, res) => {
 })
 
 router.get('/sort/young', async (req, res) => {
-    var customer = await CusModels.find().sort({ Year: 1 })
+    var customer = await CusModels.find().sort({ Age: 1 })
     res.render('manage/customer', { Login: customer })
 })
 
 router.get('/sort/noYoung', async (req, res) => {
-    var customer = await CusModels.find().sort({ Year: -1 })
+    var customer = await CusModels.find().sort({ Age: -1 })
     res.render('manage/customer', { Login: customer })
 })
 

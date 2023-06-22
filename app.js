@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 // var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var toyRouter = require('./routes/toy'); ///here
+var toyRouter = require('./routes/toy'); 
 var manageRouter= require('./routes/manage');
 var app = express();
 ////////////////////////////////////////////////////////////bodyparser 
@@ -56,7 +56,6 @@ app.use(function(err, req, res, next) {
 });
 
 port=process.env.PORT || 3001
-
 app.listen(port);
 
 module.exports = app;

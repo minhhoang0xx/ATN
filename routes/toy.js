@@ -12,11 +12,6 @@ router.get('/delete/:id', async (req, res) => {
 });
 
 
-router.post('/cart', async (req, res) => {
-    var id = req.body.id;
-    var toy = await ToyModels.findById(id);
-    res.render('toy/cart', { Toys: toy });
-})
 router.get('/addToy', async (req, res) => {
     res.render('toy/addToy');
 })
